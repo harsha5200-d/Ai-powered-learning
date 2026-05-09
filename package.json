@@ -1,0 +1,17 @@
+{
+  "name": "studyqq",
+  "version": "1.0.0",
+  "description": "A full-stack AI-powered study assistant that turns PDF documents into quizzes, notes, and analytics.",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
+    "start:frontend": "cd studyq-frontend && npm run dev",
+    "start:backend": "cd studyq-backend && venv\\Scripts\\python.exe app.py"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

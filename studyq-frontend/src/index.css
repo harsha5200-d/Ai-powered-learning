@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-surface text-white font-sans antialiased;
+    background: radial-gradient(ellipse at 20% 50%, rgba(60, 57, 250, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(120, 50, 220, 0.08) 0%, transparent 50%),
+                #0f0f1a;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* ── Buttons ─────────────────────────────────────── */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-2.5 rounded-xl font-semibold text-sm
+           bg-gradient-to-r from-brand-500 to-brand-700 text-white
+           hover:from-brand-400 hover:to-brand-600 active:scale-95
+           transition-all duration-200 shadow-lg shadow-brand-900/40;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-6 py-2.5 rounded-xl font-semibold text-sm
+           bg-surface-300 text-white border border-surface-400
+           hover:bg-surface-400 active:scale-95 transition-all duration-200;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium
+           text-slate-400 hover:text-white hover:bg-surface-200
+           transition-all duration-200;
+  }
+
+  /* ── Cards ───────────────────────────────────────── */
+  .card {
+    @apply bg-surface-100 border border-surface-300 rounded-2xl p-6;
+  }
+
+  .card-glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6;
+  }
+
+  /* ── Form inputs ─────────────────────────────────── */
+  .input {
+    @apply w-full bg-surface-200 border border-surface-400 rounded-xl px-4 py-3
+           text-white placeholder-slate-500 text-sm
+           focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-transparent
+           transition-all duration-200;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-slate-300 mb-1.5;
+  }
+
+  /* ── Badges ──────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+
+  .badge-green  { @apply badge bg-emerald-500/20 text-emerald-400; }
+  .badge-red    { @apply badge bg-red-500/20 text-red-400; }
+  .badge-blue   { @apply badge bg-brand-500/20 text-brand-400; }
+  .badge-yellow { @apply badge bg-yellow-500/20 text-yellow-400; }
+
+  /* ── Page wrapper ────────────────────────────────── */
+  .page {
+    @apply min-h-screen pt-20 pb-12 px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-lg {
+    @apply max-w-6xl mx-auto;
+  }
+
+  /* ── Section headings ────────────────────────────── */
+  .section-title {
+    @apply text-2xl font-bold text-white;
+  }
+
+  .section-sub {
+    @apply text-slate-400 text-sm mt-1;
+  }
+}
+
+/* ── Scrollbar ───────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #1e1e36; }
+::-webkit-scrollbar-thumb { background: #32324f; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #3d57fa; }
+
+/* ── Quiz option animations ──────────────────────── */
+.quiz-option {
+  transition: all 0.2s ease;
+}
+.quiz-option:hover:not(:disabled) {
+  transform: translateX(4px);
+}
