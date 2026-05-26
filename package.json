@@ -6,7 +6,7 @@
   "scripts": {
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\"",
     "start:frontend": "cd studyq-frontend && npm run dev",
-    "start:backend": "cd studyq-backend && venv\\Scripts\\python.exe app.py"
+    "start:backend": "cd studyq-backend && npm run dev"
   },
   "keywords": [],
   "author": "",
