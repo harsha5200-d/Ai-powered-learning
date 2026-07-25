@@ -62,7 +62,10 @@ router.get('/quiz/:quiz_id', authMiddleware, async (req, res) => {
 
 router.get('/quizzes', authMiddleware, async (req, res) => {
   try {
-    const quizzes = await Quiz.find({ user_id: req.user.id }).sort({ created_at: -1 });
+    const quizzes = await Quiz.find({ user_id: req.user.id })
+      .sort({ created_at: -1 })
+      .populate('questions')
+      .populate('attempts');
     const responseData = await Promise.all(quizzes.map(q => q.toDict(false, true)));
     return successResponse(res, responseData);
   } catch (err) {
