@@ -22,8 +22,8 @@ quizSchema.set('toObject', { virtuals: true });
 quizSchema.set('toJSON', { virtuals: true });
 
 quizSchema.methods.toDict = async function(include_questions = false, hide_answers = true) {
-  await this.populate('questions');
-  await this.populate('attempts');
+  if (!this.populated('questions')) await this.populate('questions');
+  if (!this.populated('attempts')) await this.populate('attempts');
   
   const data = {
     id: this._id,
