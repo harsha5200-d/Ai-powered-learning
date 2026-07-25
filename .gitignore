@@ -1,5 +1,5 @@
-node_modules/
+**/node_modules/
+**/.env
 venv/
-.env
 __pycache__/
 studyq-backend/venv/
