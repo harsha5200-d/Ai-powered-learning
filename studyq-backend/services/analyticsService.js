@@ -31,12 +31,16 @@ const getSummary = async (userId) => {
 
 const getHistory = async (userId) => {
   const attempts = await Attempt.find({ user_id: userId }).sort({ attempted_at: 1 });
+  const quizzes = await Quiz.find({ user_id: userId }, '_id document_id').lean();
+  const quizMap = {};
+  for (const q of quizzes) {
+    quizMap[q._id.toString()] = q.document_id;
+  }
   const history = [];
   for (const a of attempts) {
-    const quiz = await Quiz.findById(a.quiz_id);
     history.push({
       ...a.toDict(),
-      document_id: quiz ? quiz.document_id : null
+      document_id: quizMap[a.quiz_id.toString()] || null
     });
   }
   return history;
